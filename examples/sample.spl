@@ -1,0 +1,5 @@
+index=* sourcetype=access_combined user=*admin
+| join type=inner host [ search index=dns ]
+| transaction session_id
+| sort -_time
+| stats count by status```noqa: SPL101```

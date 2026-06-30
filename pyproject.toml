@@ -1,0 +1,61 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "splint-spl"
+version = "0.1.0"
+description = "A fast, zero-dependency linter for Splunk SPL searches."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "splforge" }]
+keywords = ["splunk", "spl", "linter", "lint", "static-analysis", "siem"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: Security",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/splforge/splint"
+Repository = "https://github.com/splforge/splint"
+Changelog = "https://github.com/splforge/splint/blob/main/CHANGELOG.md"
+Issues = "https://github.com/splforge/splint/issues"
+
+[project.scripts]
+splint = "splint.cli:main"
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/splint"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/splint", "tests", "README.md", "CHANGELOG.md", "LICENSE"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "C4", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+# splint's own configuration (dogfooding)
+[tool.splint]
+select = ["SPL001", "SPL002", "SPL003", "SPL004", "SPL005", "SPL101"]

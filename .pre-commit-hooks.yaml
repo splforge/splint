@@ -1,0 +1,7 @@
+- id: splint
+  name: splint (SPL linter)
+  description: Lint Splunk SPL searches for performance and style issues.
+  entry: splint
+  language: python
+  types: [text]
+  files: \.(spl|splunk)$

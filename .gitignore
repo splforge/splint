@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+blog/
+
+# Tooling caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Demo recording source (the rendered GIF in docs/ is committed)
+*.cast
+
+# Stray venv accidentally created as ./path/to/venv
+/path/
+
+# OS cruft
+.DS_Store

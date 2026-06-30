@@ -1,0 +1,3 @@
+index=web sourcetype=access_combined status>=400
+| stats count by status, host
+| sort 100 -count
